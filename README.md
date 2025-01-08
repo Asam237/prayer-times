@@ -35,8 +35,8 @@ Feel free to submit issues or pull requests for improvements or bug fixes.
 
 This project is maintained by:
 
-- Abba Sali Aboubakar Mamate ([@asam_237](https://twitter.com/asam_237))
 - my website: [https://abbasali.cm](https://abbasali.cm)
+- Abba Sali Aboubakar Mamate ([@asam_237](https://twitter.com/asam_237))
 - email: abbasaliaboubakar@gmail.com
 - mobile: (+237) 691846922
 
