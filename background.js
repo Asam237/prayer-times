@@ -1,7 +1,7 @@
 const API_URL = "https://api.aladhan.com/v1/timings";
 
 chrome.runtime.onStartup.addListener(() => {
-  fetchPrayerTimes();
+  fetchCOuntriesWithState();
 });
 
 function fetchPrayerTimes() {
