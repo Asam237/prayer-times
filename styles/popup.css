@@ -1,5 +1,6 @@
 body {
-  font-family: "Arial", sans-serif;
+  font-family: "Poppins", sans-serif;
+  src: url("../publics/fonts/Poppins-Medium.ttf") format("truetype");
   background-color: #f4f4f4;
   margin: 0;
   padding: 0;
@@ -162,5 +163,60 @@ h1 {
 
   #prayer-times p {
     font-size: 14px;
+  }
+}
+
+.autocomplete-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.autocomplete-item span:first-child {
+  margin-right: 10px;
+}
+
+.flag-icon {
+  font-size: 1.2em;
+}
+
+/* Container for input */
+.input-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Input styling */
+.styled-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Input focus effect */
+.styled-input:focus {
+  border-color: #4caf50; /* Green border on focus */
+  box-shadow: 0px 4px 8px rgba(76, 175, 80, 0.2);
+}
+
+/* Placeholder styling */
+.styled-input::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .styled-input {
+    font-size: 14px;
+    padding: 10px 14px;
   }
 }

@@ -10,8 +10,14 @@
         <img src="images/logo.png" alt="Icon" class="icon" /> Prayer Times
       </h1>
       <div class="location-input">
+        <input
+          type="text"
+          id="country"
+          placeholder="Enter your country"
+          list="countries-list"
+        />
+        <datalist id="countries-list"></datalist>
         <input type="text" id="city" placeholder="Enter your city" />
-        <input type="text" id="country" placeholder="Enter your country" />
         <button id="fetch-times">Get Times</button>
       </div>
       <div id="prayer-times">
