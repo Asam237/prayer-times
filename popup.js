@@ -1,7 +1,16 @@
+var headers = new Headers();
+headers.append("X-CSCAPI-KEY", "API_KEY");
+var requestOptions = {
+  method: "GET",
+  headers: headers,
+  redirect: "follow",
+};
+
 document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("fetch-times")
     .addEventListener("click", fetchPrayerTimes);
+  fetchCOuntriesWithState();
 });
 
 function fetchPrayerTimes() {
@@ -26,3 +35,14 @@ function fetchPrayerTimes() {
     })
     .catch((error) => console.error("Error fetching prayer times:", error));
 }
+
+const fetchCOuntriesWithState = () => {
+  console.log("Hello World");
+  fetch(
+    "https://api.countrystatecity.in/v1/countries/IN/states",
+    requestOptions
+  )
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.log("error", error));
+};

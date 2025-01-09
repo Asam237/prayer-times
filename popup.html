@@ -1,27 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Prayer Times</title>
-    <link rel="stylesheet" type="text/css" href="styles/popup.css">
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" href="styles/popup.css" />
+  </head>
+  <body>
     <div class="container">
-        <h1><img src="images/logo.png" alt="Icon" class="icon"> Prayer Times</h1>
-        <div class="location-input">
-            <label for="city">City:</label>
-            <input type="text" id="city" placeholder="Enter your city">
-            <label for="country">Country:</label>
-            <input type="text" id="country" placeholder="Enter your country">
-            <button id="fetch-times">Get Times</button>
+      <h1>
+        <img src="images/logo.png" alt="Icon" class="icon" /> Prayer Times
+      </h1>
+      <div class="location-input">
+        <input type="text" id="city" placeholder="Enter your city" />
+        <input type="text" id="country" placeholder="Enter your country" />
+        <button id="fetch-times">Get Times</button>
+      </div>
+      <div id="prayer-times">
+        <div class="prayer-time">
+          <strong>Fajr:</strong> <span id="fajr-time"></span>
         </div>
-        <div id="prayer-times">
-            <div class="prayer-time"><strong>Fajr:</strong> <span id="fajr-time"></span></div>
-            <div class="prayer-time"><strong>Dhuhr:</strong> <span id="dhuhr-time"></span></div>
-            <div class="prayer-time"><strong>Asr:</strong> <span id="asr-time"></span></div>
-            <div class="prayer-time"><strong>Maghrib:</strong> <span id="maghrib-time"></span></div>
-            <div class="prayer-time"><strong>Isha:</strong> <span id="isha-time"></span></div>
+        <div class="prayer-time">
+          <strong>Dhuhr:</strong> <span id="dhuhr-time"></span>
         </div>
+        <div class="prayer-time">
+          <strong>Asr:</strong> <span id="asr-time"></span>
+        </div>
+        <div class="prayer-time">
+          <strong>Maghrib:</strong> <span id="maghrib-time"></span>
+        </div>
+        <div class="prayer-time">
+          <strong>Isha:</strong> <span id="isha-time"></span>
+        </div>
+      </div>
     </div>
     <script src="popup.js"></script>
-</body>
+  </body>
 </html>
