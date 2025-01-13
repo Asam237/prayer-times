@@ -6,7 +6,7 @@
   "permissions": ["storage", "activeTab", "scripting"],
   "background": {},
   "action": {
-    "default_popup": "popup.html",
+    "default_popup": "index.html",
     "default_icon": {
       "16": "images/icon.png",
       "48": "images/icon.png",
@@ -24,5 +24,5 @@
     "48": "images/icon.png",
     "128": "images/icon.png"
   },
-  "options_page": "options.html"
+  "options_page": "index.html"
 }
