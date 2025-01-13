@@ -14,16 +14,28 @@ function fetchPrayerTimes() {
   }
 
   const apiUrl = `https://api.aladhan.com/v1/timingsByCity?city=${city}&country=${country}&method=2`;
+  function formatTime(timeString) {
+    const [hours, minutes] = timeString.split(":");
+    return `${hours}h${minutes}min`;
+  }
 
   fetch(apiUrl)
     .then((response) => response.json())
     .then((data) => {
       const timings = data.data.timings;
-      document.getElementById("fajr-time").textContent = timings.Fajr;
-      document.getElementById("dhuhr-time").textContent = timings.Dhuhr;
-      document.getElementById("asr-time").textContent = timings.Asr;
-      document.getElementById("maghrib-time").textContent = timings.Maghrib;
-      document.getElementById("isha-time").textContent = timings.Isha;
+      document.getElementById("fajr-time").textContent = formatTime(
+        timings.Fajr
+      );
+      document.getElementById("dhuhr-time").textContent = formatTime(
+        timings.Dhuhr
+      );
+      document.getElementById("asr-time").textContent = formatTime(timings.Asr);
+      document.getElementById("maghrib-time").textContent = formatTime(
+        timings.Maghrib
+      );
+      document.getElementById("isha-time").textContent = formatTime(
+        timings.Isha
+      );
     })
     .catch((error) => console.error("Error fetching prayer times:", error));
 }
@@ -43,3 +55,19 @@ const fetchCOuntriesWithState = () => {
     .then((result) => console.log(result))
     .catch((error) => console.log("error", error));
 };
+
+document.getElementById("fetch-times").addEventListener("click", function () {
+  const loaderContainer = document.querySelector(".loader-container");
+  const prayerTimes = document.getElementById("prayer-times");
+
+  // Show loader and hide prayer times
+  loaderContainer.style.display = "block";
+  prayerTimes.style.display = "none";
+
+  // Simulate fetching data
+  setTimeout(() => {
+    // Hide loader and show prayer times
+    loaderContainer.style.display = "none";
+    prayerTimes.style.display = "block";
+  }, 2000); // Simulate a 2-second delay
+});
