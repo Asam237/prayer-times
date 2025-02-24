@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Prayer Times</title>
+    <link rel="stylesheet" type="text/css" href="styles/popup.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A simple web app for fetching prayer times based on location."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+       <style>
+      /* Loader styles */
+      .loader {
+        display: none;
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #3498db;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 1s linear infinite;
+        margin: 10px auto;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .loader {
+        display: none;
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #3498db;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 1s linear infinite;
+        margin: 10px auto;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .loader-container {
+        display: none;
+        text-align: center;
+        margin-top: 20px;
+      }
+      input[type="text"] {
+        padding: 12px 16px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s, box-shadow 0.3s;
+      }
+
+      input[type="text"]:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
+        outline: none;
+      }
+
+      input[type="text"]::placeholder {
+        color: #888;
+      }
+
+      input[type="text"]::-webkit-outer-spin-button,
+      input[type="text"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      input[type="text"]:focus {
+        border-color: #3498db;
+      }
+    </style>
+    </style>
+  </head>
+  <body
+    class="flex bg-cover bg-center items-center justify-center relative h-screen w-screen"
+    style="background-image: url('./images/bg.webp')"
+  >
+    <div class="absolute inset-0 bg-black opacity-60"></div>
+    <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md z-10">
+      <h1
+        class="text-2xl font-bold text-center mb-6 flex items-center justify-center gap-2"
+      >
+        <img src="images/logo.png" alt="Icon" class="w-8 h-8 inline-block" />
+        Prayer Times
+      </h1>
+      <div class="space-y-4">
+        <div class="flex flex-col gap-2">
+          <input
+            type="text"
+            id="country"
+            placeholder="Enter your country"
+            list="countries-list"
+            class="px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
+            required
+            oninput="validateCountryInput()"
+          />
+          <input
+            type="text"
+            id="city"
+            placeholder="Enter your city"
+            class="px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
+          />
+        </div>
+
+        <datalist id="countries-list">
+            <!-- Africa -->
+             <option value="Algeria">Algeria</option>
+             <option value="Egypt">Egypt</option>
+             <option value="South Africa">South Africa</option>
+             <option value="Nigeria">Nigeria</option>
+             <option value="Kenya">Kenya</option>
+             <option value="Ghana">Ghana</option>
+             <option value="Morocco">Morocco</option>
+             <option value="Tunisia">Tunisia</option>
+             <option value="Ethiopia">Ethiopia</option>
+             <option value="Senegal">Senegal</option>
+             <option value="Tanzania">Tanzania</option>
+             <option value="Côte d'Ivoire">Côte d'Ivoire</option>
+             <option value="Uganda">Uganda</option>
+             <option value="Botswana">Botswana</option>
+             <option value="Namibia">Namibia</option>
+             <option value="Rwanda">Rwanda</option>
+             <option value="Mauritius">Mauritius</option>
+             <option value="Seychelles">Seychelles</option>
+             <option value="Zambia">Zambia</option>
+             <option value="Zimbabwe">Zimbabwe</option>
+             <option value="Angola">Angola</option>
+             <option value="Mozambique">Mozambique</option>
+             <option value="Madagascar">Madagascar</option>
+             <option value="Cameroon">Cameroon</option>
+             <option value="Democratic Republic of the Congo">Democratic Republic of the Congo</option>
+             <option value="Republic of the Congo">Republic of the Congo</option>
+             <option value="Mali">Mali</option>
+             <option value="Burkina Faso">Burkina Faso</option>
+             <option value="Niger">Niger</option>
+             <option value="Chad">Chad</option>
+             <option value="Benin">Benin</option>
+             <option value="Togo">Togo</option>
+             <option value="Gabon">Gabon</option>
+             <option value="Lesotho">Lesotho</option>
+             <option value="Liberia">Liberia</option>
+             <option value="Sierra Leone">Sierra Leone</option>
+             <option value="Guinea">Guinea</option>
+             <option value="Guinea-Bissau">Guinea-Bissau</option>
+             <option value="Central African Republic">Central African Republic</option>
+             <option value="Swaziland">Swaziland</option>
+             <option value="Equatorial Guinea">Equatorial Guinea</option>
+        </datalist>
+        <button
+          id="fetch-times"
+          class="w-full bg-blue-700 text-white font-semibold py-2 rounded-md shadow-lg hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-300"
+        >
+          Get Times
+        </button>
+      </div>
+
+      <div class="loader-container text-center mt-6 hidden">
+        <div
+          class="loader border-t-4 border-blue-500 border-solid rounded-full w-8 h-8 animate-spin mx-auto"
+        ></div>
+        <p class="text-sm text-gray-500 mt-2">Loading...</p>
+      </div>
+
+      <div id="prayer-times" class="mt-6 space-y-3 hidden">
+        <div class="prayer-time flex justify-between bg-gray-400">
+          <div class="flex items-center gap-3">
+        <i class="fas fa-moon text-orange-500 text-xl"></i>
+            <strong class="text-white font-bold">Iftar:</strong>
+          </div>
+          <span
+            id="iftar-time"
+            class="text-white font-bold font-medium text-base animate-fade-in"
+          ></span>
+        </div>
+        <div class="prayer-time flex justify-between">
+          <div class="flex items-center gap-3">
+            <i class="fas fa-sun text-blue-500 text-xl"></i>
+            <strong class="text-gray-700">Fajr:</strong>
+          </div>
+          <span
+            id="fajr-time"
+            class="text-gray-900 font-medium text-base"
+          ></span>
+        </div>
+        <div class="prayer-time flex justify-between">
+          <div class="flex items-center gap-3">
+            <i class="fas fa-sun text-yellow-500 text-xl"></i>
+            <strong class="text-gray-700">Dhuhr:</strong>
+          </div>
+          <span
+            id="dhuhr-time"
+            class="text-gray-900 font-medium text-base"
+          ></span>
+        </div>
+        <div class="prayer-time flex justify-between">
+          <div class="flex items-center gap-3">
+            <i class="fas fa-cloud-sun text-orange-500 text-xl"></i>
+            <strong class="text-gray-700">Asr:</strong>
+          </div>
+          <span
+            id="asr-time"
+            class="text-gray-900 font-medium text-base"
+          ></span>
+        </div>
+        <div class="prayer-time flex justify-between">
+          <div class="flex items-center gap-3">
+            <i class="fas fa-cloud-sun text-red-500 text-xl"></i>
+            <strong class="text-gray-700">Maghrib:</strong>
+          </div>
+          <span
+            id="maghrib-time"
+            class="text-gray-900 font-medium text-base"
+          ></span>
+        </div>
+        <div class="prayer-time flex justify-between">
+          <div class="flex items-center gap-3">
+            <i class="fas fa-moon text-indigo-500 text-xl"></i>
+            <strong class="text-gray-700">Isha:</strong>
+          </div>
+          <span
+            id="isha-time"
+            class="text-gray-900 font-medium text-base"
+          ></span>
+        </div>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

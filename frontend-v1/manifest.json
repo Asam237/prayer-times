@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Prayer Times Extension",
+  "version": "1.0",
+  "description": "Displays prayer times based on the user's location.",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "background": {},
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "images/icon.png",
+      "48": "images/icon.png",
+      "128": "images/icon.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "icons": {
+    "16": "images/icon.png",
+    "48": "images/icon.png",
+    "128": "images/icon.png"
+  },
+  "options_page": "index.html"
+}
