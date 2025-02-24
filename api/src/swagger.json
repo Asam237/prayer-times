@@ -1,0 +1,71 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Iftar Time API",
+    "description": "API to get Iftar time for a given city and country",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/iftar-time": {
+      "get": {
+        "summary": "Get Iftar time",
+        "tags": ["Iftar"],
+        "description": "Retrieve the Iftar time for a specified city and country",
+        "parameters": [
+          {
+            "name": "city",
+            "in": "query",
+            "required": true,
+            "description": "The name of the city",
+            "type": "string"
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "required": true,
+            "description": "The name of the country",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Iftar time retrieved successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "city": { "type": "string" },
+                "country": { "type": "string" },
+                "iftar_time": { "type": "string", "format": "time" }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid parameters"
+          },
+          "404": {
+            "description": "Iftar time not found for the specified location"
+          }
+        }
+      }
+    },
+    "/countries": {
+      "get": {
+        "summary": "Get countries",
+        "tags": ["Country"],
+        "description": "Retrieve all countries",
+        "responses": {
+          "200": {
+            "description": "Countries retrieved successfully"
+          }
+        }
+      }
+    }
+  }
+}
