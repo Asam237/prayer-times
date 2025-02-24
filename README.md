@@ -1,6 +1,6 @@
 ## Introduction
 
-Iftar Ramadan 2025  
+Prayer times and Iftar Ramadan 2025
 <br/>
 
 ## Composition
