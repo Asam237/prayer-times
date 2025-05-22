@@ -97,95 +97,131 @@
         class="text-2xl font-bold text-center mb-6 flex items-center justify-center gap-2 mx-auto w-11/12"
       >
         <img src="images/logo.png" alt="Icon" class="w-10 h-10 inline-block" />
-        Salah & Iftar Tracker
+        Prayer Times
       </h1>
       <div class="space-y-4">
         <div class="flex flex-col gap-2">
-          <input
-            type="text"
+          <!-- Country Select -->
+          <select
             id="country"
-            placeholder="Enter your country"
-            list="countries-list"
             class="px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
             required
-            oninput="validateCountryInput()"
-          />
+            onchange="updateCities()"
+          >
+          <option value="" disabled selected>Select your country</option>
+          <option value="Algeria">Algeria</option>
+          <option value="Burkina Faso">Burkina Faso</option>
+          <option value="Cameroon">Cameroon</option>
+          <option value="Chad">Chad</option>
+          <option value="Comoros">Comoros</option>
+          <option value="Djibouti">Djibouti</option>
+          <option value="Egypt">Egypt</option>
+          <option value="Eritrea">Eritrea</option>
+          <option value="Ethiopia">Ethiopia</option>
+          <option value="Gambia">Gambia</option>
+          <option value="Guinea">Guinea</option>
+          <option value="Ivory Coast">Ivory Coast</option>
+          <option value="Kenya">Kenya</option>
+          <option value="Libya">Libya</option>
+          <option value="Mali">Mali</option>
+          <option value="Mauritania">Mauritania</option>
+          <option value="Morocco">Morocco</option>
+          <option value="Niger">Niger</option>
+          <option value="Nigeria">Nigeria</option>
+          <option value="Senegal">Senegal</option>
+          <option value="Sierra Leone">Sierra Leone</option>
+          <option value="Somalia">Somalia</option>
+          <option value="South Africa">South Africa</option>
+          <option value="Sudan">Sudan</option>
+          <option value="Tanzania">Tanzania</option>
+          <option value="Tunisia">Tunisia</option>
+          <option value="Uganda">Uganda</option>
+          <option value="Afghanistan">Afghanistan</option>
+          <option value="Albania">Albania</option>
+          <option value="Azerbaijan">Azerbaijan</option>
+          <option value="Bahrain">Bahrain</option>
+          <option value="Bangladesh">Bangladesh</option>
+          <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+          <option value="Brunei">Brunei</option>
+          <option value="Indonesia">Indonesia</option>
+          <option value="Iran">Iran</option>
+          <option value="Iraq">Iraq</option>
+          <option value="Jordan">Jordan</option>
+          <option value="Kazakhstan">Kazakhstan</option>
+          <option value="Kuwait">Kuwait</option>
+          <option value="Kyrgyzstan">Kyrgyzstan</option>
+          <option value="Lebanon">Lebanon</option>
+          <option value="Malaysia">Malaysia</option>
+          <option value="Maldives">Maldives</option>
+          <option value="Oman">Oman</option>
+          <option value="Pakistan">Pakistan</option>
+          <option value="Palestine">Palestine</option>
+          <option value="Qatar">Qatar</option>
+          <option value="Saudi Arabia">Saudi Arabia</option>
+          <option value="Syria">Syria</option>
+          <option value="Tajikistan">Tajikistan</option>
+          <option value="Turkey">Turkey</option>
+          <option value="Turkmenistan">Turkmenistan</option>
+          <option value="United Arab Emirates">United Arab Emirates</option>
+          <option value="Uzbekistan">Uzbekistan</option>
+          <option value="Yemen">Yemen</option>
+          <option value="Other">Other</option>
+          </select>
           <input
             type="text"
+            id="custom-country"
+            placeholder="Enter your country"
+            class="px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300 hidden"
+          />
+
+          <select
             id="city"
-            placeholder="Enter your city"
             class="px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
+            required
+          >
+            <option value="" disabled selected>Select your city</option>
+            <option value="Other">Other</option>
+          </select>
+          <input
+            type="text"
+            id="custom-city"
+            placeholder="Enter your city"
+            class="px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300 hidden"
           />
         </div>
 
-        <datalist id="countries-list">
-            <!-- Africa -->
-             <option value="Algeria">Algeria</option>
-             <option value="Egypt">Egypt</option>
-             <option value="South Africa">South Africa</option>
-             <option value="Nigeria">Nigeria</option>
-             <option value="Kenya">Kenya</option>
-             <option value="Ghana">Ghana</option>
-             <option value="Morocco">Morocco</option>
-             <option value="Tunisia">Tunisia</option>
-             <option value="Ethiopia">Ethiopia</option>
-             <option value="Senegal">Senegal</option>
-             <option value="Tanzania">Tanzania</option>
-             <option value="Côte d'Ivoire">Côte d'Ivoire</option>
-             <option value="Uganda">Uganda</option>
-             <option value="Botswana">Botswana</option>
-             <option value="Namibia">Namibia</option>
-             <option value="Rwanda">Rwanda</option>
-             <option value="Mauritius">Mauritius</option>
-             <option value="Seychelles">Seychelles</option>
-             <option value="Zambia">Zambia</option>
-             <option value="Zimbabwe">Zimbabwe</option>
-             <option value="Angola">Angola</option>
-             <option value="Mozambique">Mozambique</option>
-             <option value="Madagascar">Madagascar</option>
-             <option value="Cameroon">Cameroon</option>
-             <option value="Democratic Republic of the Congo">Democratic Republic of the Congo</option>
-             <option value="Republic of the Congo">Republic of the Congo</option>
-             <option value="Mali">Mali</option>
-             <option value="Burkina Faso">Burkina Faso</option>
-             <option value="Niger">Niger</option>
-             <option value="Chad">Chad</option>
-             <option value="Benin">Benin</option>
-             <option value="Togo">Togo</option>
-             <option value="Gabon">Gabon</option>
-             <option value="Lesotho">Lesotho</option>
-             <option value="Liberia">Liberia</option>
-             <option value="Sierra Leone">Sierra Leone</option>
-             <option value="Guinea">Guinea</option>
-             <option value="Guinea-Bissau">Guinea-Bissau</option>
-             <option value="Central African Republic">Central African Republic</option>
-             <option value="Swaziland">Swaziland</option>
-             <option value="Equatorial Guinea">Equatorial Guinea</option>
-        </datalist>
-        <button
-          id="fetch-times"
-          class="w-full bg-blue-700 text-white font-semibold py-2 rounded-md shadow-lg hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-300"
-        >
-          Get Times
-        </button>
+        <!-- Buttons -->
+        <div class="flex gap-4">
+          <button
+            id="fetch-times"
+            class="flex-1 bg-blue-700 text-white font-semibold py-2 rounded-md shadow-lg hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-300"
+          >
+            Get Times
+          </button>
+          <button
+            id="clear-results"
+            class="flex-1 bg-gray-500 text-white font-semibold py-2 rounded-md shadow-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300"
+            onclick="clearResults()"
+          >
+            Clear
+          </button>
+        </div>
       </div>
 
       <div class="loader-container text-center mt-6 hidden">
-        <div
-          class="loader border-t-4 border-blue-500 border-solid rounded-full w-8 h-8 animate-spin mx-auto"
-        ></div>
-        <p class="text-sm text-gray-500 mt-2">Loading...</p>
+        <div class="loader"></div>
+        <p class="text-sm text-gray-500 mt-2">Fetching prayer times...</p>
       </div>
 
       <div id="prayer-times" class="mt-6 space-y-3 hidden">
-        <div class="prayer-time flex justify-between bg-gray-400">
-          <div class="flex items-center gap-3">
-        <i class="fas fa-moon text-orange-500 text-xl"></i>
-            <strong class="text-white font-bold">Iftar:</strong>
+        <div class="prayer-time hidden justify-between bg-gray-400">
+          <div class="hidden items-center gap-3">
+        <i class="hidden fas fa-moon text-orange-500 text-xl"></i>
+            <strong class="hidden text-white font-bold">Iftar:</strong>
           </div>
           <span
             id="iftar-time"
-            class="text-white font-bold font-medium text-base animate-fade-in"
+            class="hidden text-white font-bold font-medium text-base animate-fade-in"
           ></span>
         </div>
         <div class="prayer-time flex justify-between">
@@ -241,5 +277,129 @@
       </div>
     </div>
     <script src="popup.js"></script>
+    <script>
+  const countryCities = {
+    "Algeria": ["Algiers", "Oran", "Constantine", "Annaba"],
+    "Burkina Faso": ["Ouagadougou", "Bobo-Dioulasso", "Koudougou", "Ouahigouya"],
+    "Cameroon": ["Yaoundé", "Douala", "Garoua", "Bamenda", "Maroua", "Ngaoundere", "Bertoua"],
+    "Chad": ["N'Djamena", "Moundou", "Sarh", "Abéché"],
+    "Comoros": ["Moroni", "Mutsamudu", "Fomboni", "Domoni"],
+    "Djibouti": ["Djibouti City", "Ali Sabieh", "Dikhil", "Arta"],
+    "Egypt": ["Cairo", "Alexandria", "Giza", "Luxor"],
+    "Eritrea": ["Asmara", "Keren", "Massawa", "Assab"],
+    "Ethiopia": ["Addis Ababa", "Dire Dawa", "Mekelle", "Gondar"],
+    "Gambia": ["Banjul", "Serekunda", "Brikama", "Farafenni"],
+    "Guinea": ["Conakry", "Nzérékoré", "Kindia", "Boké"],
+    "Ivory Coast": ["Abidjan", "Bouaké", "Daloa", "Yamoussoukro"],
+    "Kenya": ["Nairobi", "Mombasa", "Kisumu", "Nakuru"],
+    "Libya": ["Tripoli", "Benghazi", "Misrata", "Tarhouna"],
+    "Mali": ["Bamako", "Sikasso", "Kalabancoro", "Koutiala"],
+    "Mauritania": ["Nouakchott", "Nouadhibou", "Rosso", "Zouérat"],
+    "Morocco": ["Casablanca", "Rabat", "Fez", "Marrakech"],
+    "Niger": ["Niamey", "Zinder", "Maradi", "Agadez"],
+    "Nigeria": ["Lagos", "Abuja", "Kano", "Ibadan"],
+    "Senegal": ["Dakar", "Thiès", "Kaolack", "Ziguinchor"],
+    "Sierra Leone": ["Freetown", "Bo", "Kenema", "Makeni"],
+    "Somalia": ["Mogadishu", "Hargeisa", "Kismayo", "Garowe"],
+    "South Africa": ["Johannesburg", "Cape Town", "Durban", "Pretoria"],
+    "Sudan": ["Khartoum", "Omdurman", "Port Sudan", "Nyala"],
+    "Tanzania": ["Dar es Salaam", "Dodoma", "Mwanza", "Arusha"],
+    "Tunisia": ["Tunis", "Sfax", "Sousse", "Kairouan"],
+    "Uganda": ["Kampala", "Gulu", "Lira", "Mbarara"],
+    "Afghanistan": ["Kabul", "Kandahar", "Herat", "Mazar-i-Sharif"],
+    "Albania": ["Tirana", "Durrës", "Vlorë", "Shkodër"],
+    "Azerbaijan": ["Baku", "Ganja", "Sumqayıt", "Mingachevir"],
+    "Bahrain": ["Manama", "Riffa", "Muharraq", "Hamad Town"],
+    "Bangladesh": ["Dhaka", "Chittagong", "Khulna", "Sylhet"],
+    "Bosnia and Herzegovina": ["Sarajevo", "Banja Luka", "Tuzla", "Zenica"],
+    "Brunei": ["Bandar Seri Begawan", "Kuala Belait", "Seria", "Tutong"],
+    "Indonesia": ["Jakarta", "Surabaya", "Bandung", "Medan"],
+    "Iran": ["Tehran", "Mashhad", "Isfahan", "Karaj"],
+    "Iraq": ["Baghdad", "Mosul", "Basra", "Erbil"],
+    "Jordan": ["Amman", "Zarqa", "Irbid", "Aqaba"],
+    "Kazakhstan": ["Almaty", "Astana", "Shymkent", "Karaganda"],
+    "Kuwait": ["Kuwait City", "Ahmadi", "Hawally", "Farwaniya"],
+    "Kyrgyzstan": ["Bishkek", "Osh", "Jalal-Abad", "Karakol"],
+    "Lebanon": ["Beirut", "Tripoli", "Sidon", "Tyre"],
+    "Malaysia": ["Kuala Lumpur", "George Town", "Ipoh", "Shah Alam"],
+    "Maldives": ["Malé", "Addu City", "Fuvahmulah", "Kulhudhuffushi"],
+    "Oman": ["Muscat", "Salalah", "Sohar", "Nizwa"],
+    "Pakistan": ["Karachi", "Lahore", "Faisalabad", "Rawalpindi"],
+    "Palestine": ["Gaza City", "Hebron", "Nablus", "Khan Yunis"], 
+    "Qatar": ["Doha", "Al Rayyan", "Umm Salal Mohammed", "Al Wakrah"],
+    "Saudi Arabia": ["Riyadh", "Jeddah", "Mecca", "Medina"],
+    "Syria": ["Damascus", "Aleppo", "Homs", "Hama"],
+    "Tajikistan": ["Dushanbe", "Khujand", "Kulob", "Bokhtar"],
+    "Turkey": ["Istanbul", "Ankara", "Izmir", "Bursa"],
+    "Turkmenistan": ["Ashgabat", "Türkmenabat", "Dashoguz", "Mary"],
+    "United Arab Emirates": ["Dubai", "Abu Dhabi", "Sharjah", "Al Ain"],
+    "Uzbekistan": ["Tashkent", "Samarkand", "Namangan", "Andijan"],
+    "Yemen": ["Sana'a", "Aden", "Ta'izz", "Hodeidah"]
+  };
+
+  function updateCities() {
+    const countrySelect = document.getElementById("country");
+    const citySelect = document.getElementById("city");
+    const customCountryInput = document.getElementById("custom-country");
+    const selectedCountry = countrySelect.value;
+
+    // Show custom country input if "Other" is selected
+    if (selectedCountry === "Other") {
+      customCountryInput.classList.remove("hidden");
+      citySelect.innerHTML = '<option value="Other">Other</option>';
+      document.getElementById("custom-city").classList.remove("hidden");
+    } else {
+      customCountryInput.classList.add("hidden");
+      document.getElementById("custom-city").classList.add("hidden");
+
+      // Clear existing city options
+      citySelect.innerHTML = '<option value="" disabled selected>Select your city</option>';
+
+      // Populate city options based on selected country
+      if (countryCities[selectedCountry]) {
+        countryCities[selectedCountry].forEach((city) => {
+          const option = document.createElement("option");
+          option.value = city;
+          option.textContent = city;
+          citySelect.appendChild(option);
+        });
+        citySelect.innerHTML += '<option value="Other">Other</option>';
+      }
+    }
+
+  }
+  
+  function checkCustomCity() {
+    const citySelect = document.getElementById("city");
+    const customCityInput = document.getElementById("custom-city");
+
+    // Show custom city input if "Other" is selected
+    if (citySelect.value === "Other") {
+      customCityInput.classList.remove("hidden");
+    } else {
+      customCityInput.classList.add("hidden");
+    }
+  }
+
+  // Function to clear results
+  function clearResults() {
+    // Reset country and city dropdowns
+    document.getElementById("country").value = "";
+    document.getElementById("city").innerHTML =
+      '<option value="" disabled selected>Select your city</option>';
+
+    // Hide prayer times container
+    const prayerTimesContainer = document.getElementById("prayer-times");
+    prayerTimesContainer.classList.add("hidden");
+
+    // Clear all prayer time results
+    document.getElementById("iftar-time").textContent = "";
+    document.getElementById("fajr-time").textContent = "";
+    document.getElementById("dhuhr-time").textContent = "";
+    document.getElementById("asr-time").textContent = "";
+    document.getElementById("maghrib-time").textContent = "";
+    document.getElementById("isha-time").textContent = "";
+  }
+</script>
   </body>
 </html>
